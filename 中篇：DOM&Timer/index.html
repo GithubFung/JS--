@@ -1,0 +1,55 @@
+<!-- 1.元素获取 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- DOM文档对象模型 -->
+  <!-- BOM浏览器对象模型 -->
+  <div id="block">默认内容</div>
+  <div id="container">
+    <p>默认内容</p>
+    <p class="item">默认内容</p>
+    <p>默认内容</p>
+    <p>默认内容</p>
+    <p class="item">默认内容</p>
+  </div>
+  <script>
+    var block = document.getElementById('block')  //根据id获取
+    console.log(block)
+    block.textContent = 'JS设置的文本'
+
+    var contents = document.getElementsByTagName('p')  // 根据标签名获取
+    console.log(contents)
+    var textArr = [
+      '镇山的虎',
+      '敏捷的豹',
+      '远见的鹰',
+      '善战的狼'
+    ]
+    for (var i = 0; i < contents.length; i++) {
+      contents[i].textContent = textArr[i]
+    }
+
+    document.querySelectorAll('p')  //根据元素选择器获取
+    document.querySelectorAll('#container p')
+
+    var secondItem = document.querySelector('.item')  //获取选择器匹配到的第一个元素
+    secondItem.textContent = '第二个替罪的羊'
+    secondItem.previousElementSibling.textContent = '羊前面是划水的鱼'
+    secondItem.nextElementSibling.textContent = '羊后面是装饭的桶'
+    var container = secondItem.parentNode
+    console.log('secondItem的父内容：' + container)
+    // container.textContent = '新内容'
+    var items = container.children
+    console.log('container的子内容：' + items)
+  </script>
+</body>
+
+</html>
